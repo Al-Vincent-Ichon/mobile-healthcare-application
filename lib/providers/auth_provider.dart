@@ -11,6 +11,13 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void register(String email, String password, String role) {
+    // Normally, you would interact with a backend to create a new user
+    // For this example, we'll just create a new user object
+    _user = User(email: email, role: role);
+    notifyListeners();
+  }
+
   void logout() {
     _user = null;
     notifyListeners();

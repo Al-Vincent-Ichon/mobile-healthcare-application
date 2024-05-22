@@ -56,7 +56,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 final authProvider =
                     Provider.of<AuthProvider>(context, listen: false);
                 authProvider.login(_emailController.text, _role);
-                Navigator.of(context).pushReplacementNamed('/home');
+
+                if (_role == 'Admin') {
+                  Navigator.of(context).pushReplacementNamed('/adminHome');
+                } else {
+                  Navigator.of(context).pushReplacementNamed('/patientHome');
+                }
               },
               child: Text('Login'),
             ),

@@ -4,7 +4,12 @@ import 'providers/auth_provider.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/home_screen.dart';
-import 'screens/role_selection.dart'; // Corrected the import
+import 'screens/role_selection.dart';
+import 'screens/admin_home_screen.dart';
+import 'screens/patient_home_screen.dart';
+import 'screens/appointment_schedule_screen.dart';
+import 'screens/patient_history_record.dart';
+import 'screens/patient_record_screen.dart'; // Import the new screens
 
 void main() {
   runApp(MyApp());
@@ -27,6 +32,11 @@ class MyApp extends StatelessWidget {
               LoginScreen(role: 'Patient'), // Default to Patient
           '/register': (context) => RegisterScreen(),
           '/home': (context) => HomeScreen(),
+          '/adminHome': (context) => AdminHomeScreen(),
+          '/patientHome': (context) => PatientHomeScreen(),
+          '/appointmentSchedule': (context) => AppointmentScheduleScreen(),
+          '/patientRecord': (context) => PatientRecordScreen(),
+          '/patientHistory': (context) => PatientHistory(),
         },
       ),
     );

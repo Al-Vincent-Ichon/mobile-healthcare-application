@@ -40,10 +40,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
               onPressed: () {
                 final authProvider =
                     Provider.of<AuthProvider>(context, listen: false);
-                authProvider.login(_emailController.text, _role);
-                Navigator.of(context).pushReplacementNamed('/home');
+                authProvider.register(
+                    _emailController.text, _passwordController.text, _role);
+
+                if (_role == 'Admin') {
+                  Navigator.of(context).pushReplacementNamed('/adminHome');
+                } else {
+                  Navigator.of(context).pushReplacementNamed('/patientHome');
+                }
               },
               child: Text('Register'),
+            ),
+            DropdownButton<String>(
+              value: _role,
+              items: <String>['Patient', 'Admin'].map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  _role = newValue!;
+                });
+              },
             ),
           ],
         ),
