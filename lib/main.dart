@@ -4,6 +4,7 @@ import 'providers/auth_provider.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/role_selection.dart'; // Corrected the import
 
 void main() {
   runApp(MyApp());
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Hospital App',
         theme: ThemeData(
-          primarySwatch: Colors.green,
+          primarySwatch: Colors.red,
         ),
-        initialRoute: '/login',
+        initialRoute: '/',
         routes: {
-          '/login': (context) => LoginScreen(),
+          '/': (context) => RoleSelectionScreen(),
+          '/login': (context) =>
+              LoginScreen(role: 'Patient'), // Default to Patient
           '/register': (context) => RegisterScreen(),
           '/home': (context) => HomeScreen(),
         },

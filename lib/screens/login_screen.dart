@@ -3,6 +3,10 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
+  final String role;
+
+  LoginScreen({required this.role});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -10,16 +14,23 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  String _role = 'Patient';
+  late String _role;
+
+  @override
+  void initState() {
+    super.initState();
+    _role = widget.role;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Image.asset(
-        'assets/images/cho1.png',
-        height: 40,
-      )),
+        title: Image.asset(
+          'assets/images/cho1.png',
+          height: 40,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -39,21 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
-            ),
-            DropdownButton<String>(
-              value: _role,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _role = newValue!;
-                });
-              },
-              items: <String>['Patient', 'Admin']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
             ),
             ElevatedButton(
               onPressed: () {

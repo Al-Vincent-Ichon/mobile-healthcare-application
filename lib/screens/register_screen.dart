@@ -36,21 +36,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            DropdownButton<String>(
-              value: _role,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _role = newValue!;
-                });
-              },
-              items: <String>['Patient', 'Admin']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
             ElevatedButton(
               onPressed: () {
                 final authProvider =
