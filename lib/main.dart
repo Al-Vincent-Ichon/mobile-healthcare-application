@@ -9,6 +9,10 @@ import 'screens/admin_home_screen.dart';
 import 'screens/patient_home_screen.dart';
 import 'screens/appointment_schedule_screen.dart';
 import 'screens/patient_history_record.dart';
+import 'screens/data_visualization.dart';
+import 'screens/admin_list_of_patient.dart';
+import 'screens/admin_patient_appointments.dart';
+
 import 'screens/patient_record_screen.dart'; // Import the new screens
 
 void main() {
@@ -37,6 +41,9 @@ class MyApp extends StatelessWidget {
           '/appointmentSchedule': (context) => AppointmentScheduleScreen(),
           '/patientRecord': (context) => PatientRecordScreen(),
           '/patientHistory': (context) => PatientHistory(),
+          '/dataVisualization': (context) => DataVisualization(),
+          '/listOfPatients': (context) => ListOfPatients(),
+          '/patientsAppointments': (context) => PatientAppointments(),
         },
       ),
     );

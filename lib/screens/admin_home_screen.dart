@@ -22,6 +22,46 @@ class AdminHomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.red,
+              ),
+              child: Text(
+                user != null ? 'Welcome, ${user.email}' : 'No user logged in',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.calendar_today),
+              title: Text('Patients Appointments'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/patientsAppointments');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.list),
+              title: Text('List of Patients'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/listOfPatients');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.bar_chart),
+              title: Text('Data Visualization'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/dataVisualization');
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: user == null
             ? const Text('No user logged in')
